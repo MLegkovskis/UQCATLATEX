@@ -1,7 +1,7 @@
 import numpy as np
 
 # Define the Wing weight function
-def function_of_interest(inputs):
+def wing_weight_function(inputs):
     S_w, W_fw, A, Lambda, q, ell, t_c, N_z, W_dg, W_p = inputs
     g = (0.036 * S_w**0.758 * W_fw**0.0035 * (A / np.cos(np.radians(Lambda))**2)**0.6 *
          q**0.006 * ell**0.04 * (100 * t_c / np.cos(np.radians(Lambda)))**-0.3 *
@@ -26,4 +26,4 @@ problem = {
     ]
 }
 
-model = function_of_interest
+model = wing_weight_function

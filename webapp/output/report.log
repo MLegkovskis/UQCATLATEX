@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.6.28)  3 JUL 2024 23:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.6.28)  14 JUL 2024 17:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**report.tex
-(./report.tex
+**output/report.tex
+(./output/report.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -284,7 +284,7 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count288
 \l__pdf_internal_box=\box52
 )
-(./report.aux)
+(output/report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
@@ -379,7 +379,7 @@ LaTeX Info: Redefining \ref on input line 10.
 LaTeX Info: Redefining \pageref on input line 10.
 LaTeX Info: Redefining \nameref on input line 10.
 
-(./report.out) (./report.out)
+(output/report.out) (output/report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
@@ -405,7 +405,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.13 \usepackage
-                [a4paper, margin=1.5cm]{geometry}
+                [utf8]{inputenc}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -418,19 +418,6 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.14 \usepackage
-                {amsmath}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! LaTeX Error: Can be used only in preamble.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15 \usepackage
                 {graphicx}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -443,8 +430,21 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
+l.15 \usepackage
+                {amsmath}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
 l.16 \usepackage
-                {caption}
+                {amsfonts}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
@@ -457,6 +457,19 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.17 \usepackage
+                {geometry}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 \usepackage
                 {booktabs}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -469,7 +482,20 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.23 \begin{document}
+l.20 \geometry
+              {margin=1.5cm}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Can be used only in preamble.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 \begin{document}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -481,151 +507,153 @@ or  <return>  to continue without it.
 <figures/grid_plot.png, id=43, 1084.05pt x 361.35pt>
 File: figures/grid_plot.png Graphic file (type png)
 <use figures/grid_plot.png>
-Package pdftex.def Info: figures/grid_plot.png  used on input line 49.
+Package pdftex.def Info: figures/grid_plot.png  used on input line 44.
 (pdftex.def)             Requested size: 500.484pt x 166.82953pt.
-<figures/mean_estimate_convergence_plot.png, id=45, 722.7pt x 433.62pt>
+<figures/mean_estimate_convergence_plot.png, id=46, 722.7pt x 433.62pt>
 File: figures/mean_estimate_convergence_plot.png Graphic file (type png)
 <use figures/mean_estimate_convergence_plot.png>
 Package pdftex.def Info: figures/mean_estimate_convergence_plot.png  used on in
-put line 59.
+put line 57.
 (pdftex.def)             Requested size: 500.484pt x 300.28984pt.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.72 ... & PCC & Pearson & PRCC & Spearman & SRC &
+                                                   SRRC \\ \hline
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
-Underfull \hbox (badness 3058) in paragraph at lines 77--77
-[]\OT1/cmr/m/n/10 PCC (Pear-
- []
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.73 ... & 0.615 & 0.518 & 0.954 & 0.796 & 0.517 &
+                                                   0.796 \\ \hline
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.74 ....530 & -0.417 & -0.844 & -0.400 & -0.414 &
+                                                   -0.397 \\ \hline
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--79
-\OT1/cmr/m/n/10 tial Rank
- []
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.75 ...325 & -0.228 & -0.680 & -0.235 & -0.228  &
+                                                   -0.233 \\ \hline
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.76 ....013 & -0.023 & -0.003 & -0.019 & -0.009 &
+                                                   -0.001 \\ \hline
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--79
-\OT1/cmr/m/n/10 Cor-re-la-tion
- []
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.77 ... & 0.366 & 0.261 & 0.766 & 0.298 & 0.261 &
+                                                   0.300 \\ \hline
+You have given more \span or & marks than there were
+in the preamble to the \halign or \valign now in progress.
+So I'll assume that you meant to type \cr instead.
 
-
-Underfull \hbox (badness 5908) in paragraph at lines 81--81
-[]\OT1/cmr/m/n/10 SRC (Stan-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
-\OT1/cmr/m/n/10 dard Re-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 81--81
-\OT1/cmr/m/n/10 gres-sion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
-\OT1/cmr/m/n/10 dard Rank
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--83
-\OT1/cmr/m/n/10 Re-gres-sion
- []
-
-
-Overfull \hbox (34.29517pt too wide) in paragraph at lines 73--90
- [][] 
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.91 \end{table}
-                 [2 <./figures/grid_plot.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/correlation_coefficients.png, id=63, 867.24pt x 578.16pt>
+<figures/correlation_coefficients.png, id=48, 867.24pt x 578.16pt>
 File: figures/correlation_coefficients.png Graphic file (type png)
 <use figures/correlation_coefficients.png>
 Package pdftex.def Info: figures/correlation_coefficients.png  used on input li
-ne 95.
+ne 86.
 (pdftex.def)             Requested size: 500.484pt x 333.65685pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.89 \end{figure}
+                  [2 <./figures/grid_plot.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<figures/sobol_indices.png, id=65, 462.528pt x 346.896pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<figures/sobol_indices.png, id=63, 462.528pt x 346.896pt>
 File: figures/sobol_indices.png Graphic file (type png)
 <use figures/sobol_indices.png>
-Package pdftex.def Info: figures/sobol_indices.png  used on input line 141.
+Package pdftex.def Info: figures/sobol_indices.png  used on input line 129.
 (pdftex.def)             Requested size: 500.484pt x 375.38313pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.155   \item V
-               ariables $G$ and $M$ have minimal impact, as indicated by the...
-[3 <./figures/mean_estimate_convergence_plot.png>]pdfTeX warning (ext4): destin
-ation with the same identifier (name{page.}) has been already used, duplicate i
-gnored
+l.151 
+       [3 <./figures/mean_estimate_convergence_plot.png>]pdfTeX warning (ext4):
+ destination with the same identifier (name{page.}) has been already used, dupl
+icate ignored
 <to be read again> 
                    \relax 
-l.165 
-       [4]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.}) has been already used, duplicate ignored
+l.152 \end{document}
+                     [4]pdfTeX warning (ext4): destination with the same identi
+fier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.166 \end{document}
+l.152 \end{document}
                      [5 <./figures/correlation_coefficients.png>]pdfTeX warning
  (ext4): destination with the same identifier (name{page.}) has been already us
 ed, duplicate ignored
 <to be read again> 
                    \relax 
-l.166 \end{document}
-                     [6 <./figures/sobol_indices.png>] (./report.aux)
+l.152 \end{document}
+                     [6 <./figures/sobol_indices.png>] (output/report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 59879E34CB75CA2756B55C3DA0F3136C;1233.
+(rerunfilecheck)             Checksum: 8A35D6EE3F5AE1EEBD3F4540CD4382A4;1334.
  )
 (\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 23 (\begingroup)
+### semi simple group (level 1) entered at line 26 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
  9417 strings out of 480247
- 147348 string characters out of 5896151
- 457483 words of memory out of 5000000
- 27235 multiletter control sequences out of 15000+600000
- 474977 words of font info for 48 fonts, out of 8000000 for 9000
+ 147432 string characters out of 5896151
+ 450524 words of memory out of 5000000
+ 27236 multiletter control sequences out of 15000+600000
+ 474669 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,14n,63p,513b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,63p,502b,408s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/ml/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/t
 crm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb>
-Output written on ./report.pdf (6 pages, 578218 bytes).
+x12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on output/report.pdf (6 pages, 298115 bytes).
 PDF statistics:
- 151 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
+ 122 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -31,7 +31,7 @@ def get_prompt(user_model_code, combined_coefficients_csv, expectation_convergen
     1. **Model Overview:**
        - Brief description of the model and input parameters in LaTeX format - never reprint the model as python code, always convert the numpy-based model to the latex format.
        - Try to understand what the model is in terms of the output and its physical meaning even if the user provided pure python code without comments
-       - Try to deduce units of all the variables and use them for better clarity
+       - Try to deduce units of all the variables including the model output and use them for better clarity
        - In this section you must make reference to grid_plot.png
 
     2. **Expectation Convergence Analysis:**
@@ -48,21 +48,51 @@ def get_prompt(user_model_code, combined_coefficients_csv, expectation_convergen
        - Discussion on correlation coefficients that are consistently higher than other ones and why. 
        - Discussion if the Sobol index bounds are large or small and what does it mean mathematically and physically!
        - In this section you must make reference to correlation_coefficients.png and sobol_indices.png 
-       - As a reminder that will help you and the user (you must communicate the principles below when you talk about Sobol indices so that the user has better context - actually genereate the equations in latex and contextualize them): There exist several types of Sobol indices. The first order Sobol sensitivity index $S$ measures the direct effect each parameter has on the variance of the model:
-        
-        $$
-        S_i=\\frac{{\\mathbb{{V}}\\left[\\mathbb{{E}}\\left[Y \\mid Q_i\\right]\\right}}{{\\mathbb{{V}}[Y]}}
-        $$
 
-        Here, $\\mathbb{{E}}\\left[Y \\mid Q_i\\right]$ denotes the expected value of the output $Y$ when parameter $Q_i$ is fixed. The first order Sobol sensitivity index tells us the expected reduction in the variance of the model when we fix parameter $Q_i$. The sum of the first order Sobol sensitivity indices can not exceed one (Glen and Isaacs, 2012).
+       - Use the following table for the correlation coefficients (you must copy-paste this table into the report as is and use to contextualise the data):
 
-        Higher order sobol indices exist, and give the sensitivity due interactions between a parameter $Q_i$ and various other parameters. It is customary to only calculate the first and total order indices (Saltelli et al., 2010). The total Sobol sensitivity index $S_{{T i}}$ includes the sensitivity of both first order effects as well as the sensitivity due to interactions (covariance) between a given parameter $Q_i$ and all other parameters (Homma and Saltelli, 1996). It is defined as:
-        $$
-        S_{{T i}}=1-\\frac{{\\mathbb{{V}}\\left[\\mathbb{{E}}\\left[Y \\mid Q_{{-i}}\\right]\\right}}{{\\mathbb{{V}}[Y]}},
-        $$
-        where $Q_{{-i}}$ denotes all uncertain parameters except $Q_i$. The sum of the total Sobol sensitivity indices is equal to or greater than one (Glen and Isaacs, 2012). If no higher order interactions are present, the sum of both the first and total order sobol indices are equal to one.
-        
-       
+        \\begin{{table}}[h]
+        \\centering
+        \\begin{{tabular}}{{|p{{2cm}}|c|p{{12cm}}|}}
+        \\hline
+        \\textbf{{Coefficient}} & \\textbf{{Mathematics}} & \\textbf{{Description}} \\\\
+        \\hline
+        PCC (Pearson) & $\\rho_{{U,V}} = \\frac{{\\text{{Cov}}(U,V)}}{{\\sigma_U \\sigma_V}}$ & Measures the strength of a linear relationship between two variables. Can be positive or negative. Values range from -1 to 1, where 1 indicates a perfect positive linear relationship and -1 indicates a perfect negative linear relationship. Zero does not necessarily imply independence. If PCC for a given model input is 0.5, it means there is a moderate positive linear relationship with the output. \\\\
+        \\hline
+        PRCC (Partial Rank Correlation Coefficient) & $\\widehat{{\\rho}}^S_{{U,V}}$ (on ranked data) & Computes the Pearson correlation coefficient on ranked input and output variables. Useful for identifying monotonic relationships when linearity is not present. Values range from -1 to 1. If PRCC for a given model input is 0.5, it means there is a moderate positive monotonic relationship with the output. \\\\
+        \\hline
+        SRC (Standard Regression Coefficient) & $\\widehat{{\\text{{SRC}}}}_i = \\widehat{{a}}_i \\frac{{\\widehat{{\\sigma}}_i}}{{\\widehat{{\\sigma}}}}$ & Measures the influence of input variables on output using multiple linear regression. Useful for linear relationships. The closer to 1, the greater the impact on the variance of $Y$. Negative values are possible. If SRC for a given model input is 0.5, it means the input has a moderate positive influence on the output variance. \\\\
+        \\hline
+        SRRC (Standard Rank Regression Coefficient) & $\\widehat{{\\text{{SRC}}}}_i$ (on ranked data) & Computes SRC on ranked input and output variables. Useful for monotonic relationships where linearity is not present. Values range from -1 to 1. If SRRC for a given model input is 0.5, it means the input has a moderate positive monotonic influence on the output. \\\\
+        \\hline
+        Spearman & $\\rho^S_{{U,V}} = \\rho_{{F_U(U),F_V(V)}}$ & Measures the strength of a monotonic relationship between two variables using ranks. Equivalent to Pearson's on ranked data. Values range from -1 to 1, indicating perfect monotonic relationships. Can be positive or negative. If Spearman for a given model input is 0.5, it means there is a moderate positive monotonic relationship with the output. \\\\
+        \\hline
+        \\multicolumn{{3}}{{|p{{17cm}}|}}{{\\textbf{{Variables:}} $\\text{{Cov}}(U,V)$: covariance between $U$ and $V$; $\\sigma_U, \\sigma_V$: standard deviations of $U$ and $V$; $\\widehat{{a}}_i$: estimated regression coefficients; $\\widehat{{\\sigma}}_i, \\widehat{{\\sigma}}$: sample standard deviations; $F_U, F_V$: cumulative distribution functions; $U, V$: random variables; $\\rho$: correlation coefficient.}} \\\\
+        \\hline
+        \\end{{tabular}}
+        \\caption{{Summary of Sensitivity Analysis Coefficients}}
+        \\end{{table}}
+
+       - Use the following text to explain Sobol indices (you must copy-paste this table into the report as is and use to contextualise the data):
+
+        Sobol' indices are a powerful method in uncertainty quantification (UQ) and sensitivity analysis (SA) that measure the influence of input variables on the output of a model. Consider an input random vector $\\mathbf{{X}} = \\left( X_1, \\ldots, X_d \\right)$ and an output $Y$ of the model. The Sobol' method decomposes the variance of $Y$ into contributions from each input variable and their interactions.
+
+        The Sobol' decomposition is given by:
+        \\[ Y = h_0 + \\sum_{{i=1}}^d h_{{\\{{i\\}}}}(X_i) + \\sum_{{1 \\leq i < j \\leq d}} h_{{\\{{i,j\\}}}}(X_i, X_j) + \\ldots + h_{{\\{{1, 2, \\ldots, d\\}}}}(X_1, X_2, \\ldots, X_d), \\]
+        where $h_0$ is a constant and $h_{{\\{{i\\}}}}$, $h_{{\\{{i,j\\}}}}$, etc. are functions capturing the effect of individual variables and their interactions.
+
+        The first order Sobol' index $S_i$ measures the contribution of a single input variable $X_i$ to the variance of $Y$:
+        \\[ S_i = \\frac{{\\Var{{\\Expect{{Y | X_i}}}}}}{{\\Var{{Y}}}}, \\]
+        indicating how much of the output variance can be explained by $X_i$ alone. A first order Sobol' index of 0.5 means that 50\\% of the output variance is due to $X_i$.
+
+        The total Sobol' index $S^T_i$ accounts for both the individual effect of $X_i$ and its interactions with other variables:
+        \\[ S^T_i = 1 - \\frac{{\\Var{{\\Expect{{Y | X_{{\\overline{{\\{{i\\}}}}}}}}}}}}{{\\Var{{Y}}}}, \\]
+        where $X_{{\\overline{{\\{{i\\}}}}}}$ denotes all input variables except $X_i$. A total Sobol' index of 0.5 means that 50\\% of the output variance involves $X_i$ through its own effect and its interactions.
+
+        Unlike correlation coefficients (PCC, PRCC, Spearman, SRC, SRRC), which measure linear or monotonic relationships between inputs and outputs, Sobol' indices provide a comprehensive variance-based decomposition, capturing both individual and interaction effects. While correlation coefficients can identify linear or monotonic influence, they do not quantify the contribution to output variance or the interaction effects. Therefore, Sobol' indices and correlation coefficients complement each other in UQ and SA: correlation coefficients help identify relationships, whereas Sobol' indices quantify their contributions to output variability.
+
+        In summary, Sobol' indices offer a detailed variance-based sensitivity analysis, distinguishing between first order effects and total effects, which include interactions. They are essential for understanding the contributions of input variables to model output variance and provide insights beyond what correlation coefficients can offer.
+
     4. **Key Findings:**
        - Critical insights from the analysis.
 

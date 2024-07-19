@@ -1,4 +1,11 @@
 Variable,Correlation_Coefficient
-"[x1,x2,x3]",0.4352717526175816
-"[x1,x2,x3]",0.008324799133221188
-"[x1,x2,x3]",0.0027879179827391366
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.3487905796313475
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.006765996007501235
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.46957843320166753
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.003680738001212638
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.00549034995410117
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.04151290382882941
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",-0.36119052416535363
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.6364975044401678
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.3077285345972233
+"[S_w,W_fw,A,Lambda,q,ell,t_c,N_z,W_dg,W_p]",0.07137422255043582
